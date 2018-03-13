@@ -6,6 +6,7 @@ import ContentAdd from 'material-ui/svg-icons/content/add';
 /**
 tags special component
 **/
+let tagExport;
 class Tags extends Component{
 
   constructor(props){
@@ -226,7 +227,7 @@ class Tags extends Component{
   render(){
 
     const tags=this.state.tags.map((tag,index)=>{
-
+        tagExport = this.renderTag(tag, index);
         return this.renderTag(tag,index);
 
     });
@@ -293,7 +294,7 @@ Tags.propTypes = {
   containerStyle: React.PropTypes.object, //style for container
   onRemove: React.PropTypes.func, //remove, delete tag callback function(removedTag,allTags)
   onAdd: React.PropTypes.func, //add callback  function(addedTag,allTags)
-  button: React.PropTypes.object //button props - it has child prop inside
+  button: React.PropTypes.object, //button props - it has child prop inside
   handleInputChange: React.PropTypes.func
 
 };
@@ -318,4 +319,7 @@ Tags.defaultProps = {
   button:{child:<ContentAdd />} //default + icon
 };
 
-export default Tags;
+export {
+  tagExport,
+  Tags,
+}
